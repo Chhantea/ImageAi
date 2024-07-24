@@ -12,7 +12,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { navLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
-import { SignedOut, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignIn, UserButton } from '@clerk/nextjs'
 import { Button } from '../ui/button'
   
 const MobileNav = () => {
@@ -28,8 +28,9 @@ const MobileNav = () => {
          />
         </Link>
       <nav className='flex gap-2'>
+      <SignedIn>
       <Sheet>
-      <UserButton afterSwitchSessionUrl='/' />
+      <UserButton  />
         <SheetTrigger>
             <Image
              src={'/assets/icons/menu.svg'}
@@ -72,17 +73,17 @@ const MobileNav = () => {
                             </li>
                         )
                     })}
-                    <SignedOut>
-                    <Button asChild className='button bg-purple-gradient bg-cover'>
-                        <Link href={"/sign-in"}>Login
-                        </Link>
-                    </Button>
-                </SignedOut>
                 </ul>
             </>
         </SheetContent>
         </Sheet>
-
+        </SignedIn>
+        <SignedOut>
+            <Button asChild className='button bg-purple-gradient bg-cover'>
+              <Link href={"/sign-in"}>Login
+              </Link>
+            </Button>
+        </SignedOut>
       </nav>
     </header>
   )
