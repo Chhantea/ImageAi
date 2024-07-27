@@ -2,12 +2,12 @@ import Header from '@/components/share/header'
 import React, { use } from 'react';
 import {transformationTypes} from '@/constants'
 import TransformationForm from '@/components/share/TransformationForm';
-import { auth } from '@clerk/nextjs';
+// import { auth } from '@clerk/nextjs';
 import { getUserById } from '@/lib/actions/user.actions';
 import { redirect } from 'next/navigation';
 
 const AddTransformationType = async ({params:{type}}: SearchParamProps) => {
-  const {userId} = auth();
+  const userId = "123";
   const transformation = transformationTypes[type];
   if(!userId) redirect('/sign-in');
 
