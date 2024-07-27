@@ -15,6 +15,7 @@ import { AspectRatioKey, debounce, deepMergeObjects } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { updateCredits } from '@/lib/actions/user.actions';
 import MediaUploader from './MediaUploader';
+import TransformImage from './TransformImage';
  
 export const formSchema = z.object({
 //   username: z.string().min(2).max(50),
@@ -53,7 +54,7 @@ const TransformationForm = ({action,data= null,type,userId,creditBalance,config=
     function onSubmit(values: z.infer<typeof formSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
-        console.log(values)
+        console.log("dsadsadsads ==>",values)
     }
 
     const onSelectFieldHandler=(value:string,onChangeField:(value:string)=>void)=>{
@@ -91,7 +92,7 @@ const TransformationForm = ({action,data= null,type,userId,creditBalance,config=
       deepMergeObjects(newTransformation,transformationConfig);
       setNewTransformation(null);
       startTransition(async()=>{
-        // await updateCredits(userId,creditFee)
+        await updateCredits(userId,-1)
       })
     }
 
@@ -175,7 +176,6 @@ const TransformationForm = ({action,data= null,type,userId,creditBalance,config=
             )}
           </div>
         )}
-      </form>
       <div className='mt-5 media-uploader-field'>
         <CustomField
         control={form.control}
@@ -190,6 +190,14 @@ const TransformationForm = ({action,data= null,type,userId,creditBalance,config=
            type={type}
           />
         )}
+        />
+        <TransformImage
+         image={Image}
+         type={type}
+         title={form.getValues().title}
+         isTransforming = {isTransforming}
+         setIsTransforming = {setIsTransforming}
+         transformationConfig = {transformationConfig}
         />
       </div>
        <div className='flex flex-col gap-4 '>
@@ -209,7 +217,7 @@ const TransformationForm = ({action,data= null,type,userId,creditBalance,config=
           {isSubmitting? "Submitting...":"Save Image"}
         </Button>
        </div>
-     
+       </form>
     </Form>
     );
 }
