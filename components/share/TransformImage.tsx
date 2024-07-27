@@ -13,7 +13,6 @@ const TransformImage = ({image,type,
   const downloadHandler=()=>{
 
   };
-
   return (
     <div className='flex flex-col gap-4'>
         <div className='flex-between'>
@@ -66,7 +65,7 @@ const TransformImage = ({image,type,
                 </div>
             ):(
                 <div className='transformed-placeholder'>
-                    TT img
+                    Transform Image
                 </div>
             )}
         </div>

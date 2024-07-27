@@ -10,13 +10,8 @@ const AddTransformationType = async ({params:{type}}: SearchParamProps) => {
   const {userId} = auth();
   const transformation = transformationTypes[type];
   if(!userId) redirect('/sign-in');
-
-    // const user = await getUserById(userId); 
- 
-  const user ={
-    _id : "abc",
-    creditBalance:10
-  }
+  const user = await getUserById(userId); 
+  
   return (
     <>
       <Header
