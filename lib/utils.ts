@@ -11,11 +11,11 @@ export function cn(...inputs: ClassValue[]) {
 export const handleError = (error: unknown) => {
   if (error instanceof Error) {
     // This is a native JavaScript error (e.g., TypeError, RangeError)
-    console.log(error.message);
+    console.log("er1",error.message);
     throw new Error(`Error: ${error.message}`);
   } else if (typeof error === "string") {
     // This is a string error message
-    console.log(error);
+    console.log("er2",error);
     throw new Error(`Error: ${error}`);
   } else {
     // This is an unknown type of error
@@ -151,5 +151,5 @@ export const download = (url: string, filename: string) => {
       document.body.appendChild(a);
       a.click();
     })
-    .catch((error) => console.log({ error }));
+    .catch((error) => console.log("er3",{ error }));
 };

@@ -10,8 +10,8 @@ const IBMPlex = IBM_Plex_Sans({
    weight:["400","500",'600','700'],
    variable:'--font-ibm-plex'
    });
-   const APP_NAME = "ImageAi App";
-   const APP_DEFAULT_TITLE = "Image ai playground.";
+   const APP_NAME = "ImageAi";
+   const APP_DEFAULT_TITLE = "ImageAi";
    const APP_TITLE_TEMPLATE = "%s - ImageAi App";
    const APP_DESCRIPTION = "Best ImageAi app in the world!";
 export const metadata: Metadata = {
@@ -67,7 +67,7 @@ export default function RootLayout({
         crawlSpeed={200}
         height={3}
         crawl={true}
-        showSpinner={true}
+        showSpinner={false}
         easing="ease"
         speed={200}
         shadow="0 0 10px #2299DD,0 0 5px #2299DD"

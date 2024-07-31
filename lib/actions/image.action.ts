@@ -22,7 +22,6 @@ export async function addImage({image,userId,path}:AddImageParams){
         if(!author){
             throw new Error("User not found"); 
         }
-        console.log("---------> ",image)
         const newImage =await Image.create({
             ...image,
             author:author._id,
@@ -108,7 +107,7 @@ export async function getAllImages({limit=9,page=1,searchQuery=""}:{
         .expression(expression)
         .execute();
 
-        console.log(resources.public)
+        console.log("img err--->",resources.public)
         const resourceIds = resources.map((resource: any)=> resource.public_id);
 
         let query = {};
